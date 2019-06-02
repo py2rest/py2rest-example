@@ -1,0 +1,22 @@
+<h1>List of articles</h1>
+<a routerLink="/article/create">Create new article</a>
+<div *ngIf="articles$ | async as articles">
+  <div *ngIf="tag">
+    <p>Articles tagged with {{ tag }}</p>
+    <a routerLink="/">View all articles</a>
+  </div>
+  <div *ngFor="let article of articles.articles;">
+    <h1><a routerLink="/article/{{article.id}}">{{ article.title }}</a></h1>
+    <h2>{{ article.author }} on {{ article.createdDate.toLocaleString() }}</h2>
+    <p>Tags: <a *ngFor="let articleTag of article.tags" [routerLink]="['/']" [queryParams]="{tag: articleTag}"> {{ articleTag }} </a></p>
+    <p>{{ article.content }}</p>
+  </div>
+  <div class="pagination">
+    <span *ngIf="page > 1" (click)="previousPage()">Previous Page</span>
+    <span>Page {{ page }} of {{ articles.pagesCount }}</span>
+    <span *ngIf="articles.pagesCount > page" (click)="nextPage()">Next Page</span>
+  </div>
+</div>
+<div *ngIf="!((articles$ | async) && (articles$ | async)?.articles.length > 0)">
+  No articles available
+</div>

@@ -1,0 +1,25 @@
+
+
+.container label {
+  display: block;
+  text-align: left;
+  margin: 5px 0 10px 0;
+}
+
+.container input, textarea {
+  width: 100%;
+  padding: 14px 6px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.content-input {
+  height: 400px;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+

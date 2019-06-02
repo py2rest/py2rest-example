@@ -1,0 +1,58 @@
+<div class="container" *ngIf="details$ | async as details">
+  <article class="article">
+    <h4 class="tags">Tags: {{ details.tags }}</h4>
+    <h4 class="date-and-author">By {{ details.author }}, on {{ details.createdDate.toLocaleString() }}</h4>
+    <h1>{{ details.title }}</h1>
+    <p class="article-content">{{ details.content }}</p>
+    <p>This article has {{ details.likesCount }} likes. <span class="like" (click)="likeArticle(details)">Like</span> this article!</p>
+  </article>
+  <div class="comment-section">
+    <h3 >New Comment</h3>
+    <form [formGroup]="commentForm" (ngSubmit)="onComment(details)">
+
+      <div class="form-group">
+         <label class="form-label" for="author">Author</label>
+         <input class="author-input" id="author" formControlName="author" placeholder="Author Name">
+
+         <span class="help-block" *ngIf="!commentForm.get('author').valid && commentForm.get('author').touched">
+          Enter a valid author name
+         </span>
+      </div>
+
+    <div class="form-group">
+       <label class="form-label" for="content">Content</label>
+       <textarea class="content-input" id="content" formControlName="content" placeholder="Content">
+       </textarea>
+
+       <span class="help-block" *ngIf="!commentForm.get('content').valid && commentForm.get('content').touched">
+        Enter a valid article content
+       </span>
+    </div>
+
+     <span class="help-block" *ngIf="!commentForm.valid && commentForm.touched">
+       Please correct the form errors.
+     </span>
+
+    <button class="btn btn-primary submit-btn comment-submit-btn" type="submit">Submit</button>
+    <div class="clearfix"></div>
+  </form>
+
+    <div class="comments">
+      <div class="comment" *ngFor="let comment of details.comments">
+        <div class="comment-header">
+          <div class="comment-author">
+          {{ comment.author }}
+        </div>
+          <div class="comment-date">{{ comment.createdDate.toLocaleString() }}</div>
+        </div>
+        <div class="comment-content">
+          {{ comment.content }}
+        </div>
+        <div class="comment-likes">
+          This comment has {{ comment.likesCount }} likes.
+          <span class="like" (click)="onCommentLike(comment)">Like</span> this comment!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

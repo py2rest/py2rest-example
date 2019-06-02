@@ -1,0 +1,47 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+         <label class="form-label" for="title">Title</label>
+         <input class="author-input" id="title" formControlName="title" placeholder="Title">
+
+         <span class="help-block" *ngIf="!form.get('title').valid && form.get('title').touched">
+          Enter a valid title
+         </span>
+      </div>
+
+      <div class="form-group">
+         <label class="form-label" for="author">Author</label>
+         <input class="author-input" id="author" formControlName="author" placeholder="Author Name">
+
+         <span class="help-block" *ngIf="!form.get('author').valid && form.get('author').touched">
+          Enter a valid author name
+         </span>
+      </div>
+
+    <div class="form-group">
+         <label class="form-label" for="tags">Tags</label>
+         <input class="tags-input" id="tags" formControlName="tags" placeholder="comma,separated,tags">
+
+         <span class="help-block" *ngIf="!form.get('tags').valid && form.get('tags').touched">
+          Enter valid tags
+         </span>
+      </div>
+
+    <div class="form-group">
+       <label class="form-label" for="content">Content</label>
+       <textarea class="content-input" id="content" formControlName="content" placeholder="Content">
+       </textarea>
+
+       <span class="help-block" *ngIf="!form.get('content').valid && form.get('content').touched">
+        Enter a valid article content
+       </span>
+    </div>
+
+     <span class="help-block" *ngIf="!form.valid && form.touched">
+       Please correct the form errors.
+     </span>
+
+    <button class="btn btn-primary submit-btn" type="submit">Submit</button>
+  </form>
+</div>

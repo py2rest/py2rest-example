@@ -1,0 +1,62 @@
+
+.container label {
+  display: block;
+  text-align: left;
+  margin: 5px 0;
+}
+
+.container input, textarea {
+  width: 100%;
+  padding: 14px 6px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.date-and-author, .comment-date {
+  font-size: 14px;
+  text-align: right;
+  height: 0;
+  margin: 0;
+}
+
+.tags, .comment-author {
+  font-size: 14px;
+  text-align: left;
+  height: 0;
+  margin: 0;
+}
+
+.article-content {
+  text-align: left;
+  white-space:pre-wrap;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.like {
+  color: #7ed333;
+  cursor: pointer;
+}
+
+.comment-submit-btn {
+  float: right;
+  margin: 10px 0;
+}
+.clearfix {
+  clear: both;
+}
+.comment-header {
+  height: 24px;
+}
+.comment {
+  text-align: left;
+  margin-bottom: 10px;
+}
+.comment:not(:last-child) {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+
+.comment-likes {
+  text-align: right;
+}
